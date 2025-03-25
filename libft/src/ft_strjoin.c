@@ -6,21 +6,11 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:16:23 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 11:42:38 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:27:38 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../libft.h"
-
-static int count_len(char const *str)
-{
-	int i;
-
-	i = 0;
-	while(str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -30,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
     j = 0;
-	res = malloc(sizeof (char) * (count_len(s1) + count_len(s2) + 1));
+	res = malloc(sizeof (char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
 	while (s1[i])
