@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:48:31 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:57:43 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:17:37 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@ int	isprint(int c);
 // char modification functions
 int	toupper(int c);
 int tolower(int c);
+
+// mem functions
+void    *ft_memset(void *s, int c, size_t n);
+void	bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 
 #endif
