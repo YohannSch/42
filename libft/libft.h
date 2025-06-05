@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:48:31 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/05/07 17:17:37 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:48:48 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include<stdlib.h>
 # include<stdio.h>
 # include<unistd.h>
+# include <string.h>
+# include <stdarg.h>
+
+# define UL unsigned long long
+# define HEXAL "0123456789abcdef"
+# define HEXAU "0123456789ABCDEF"
+# define B10 "0123456789"
 
 // write functions
 void	ft_putstr_fd(char *s, int fd);
