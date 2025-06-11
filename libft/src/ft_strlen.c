@@ -6,17 +6,18 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:20:25 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:22:13 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:43:08 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-size_t ft_strlen(char const *str)
+
+size_t	ft_strlen(char const *str)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }

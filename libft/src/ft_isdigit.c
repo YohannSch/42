@@ -6,13 +6,13 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:45:32 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:46:05 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:29:14 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

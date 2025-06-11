@@ -6,15 +6,15 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 12:55:08 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 11:42:41 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:27:57 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../libft.h"
+#include "../libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	  i;
+	int	i;
 
 	i = 0;
 	while (s[i])

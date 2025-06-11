@@ -6,17 +6,17 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 16:52:35 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/05/07 17:11:26 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:37:48 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../libft.h"
+#include "../libft.h"
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	char * tmp;
-	
+	size_t	i;
+	char	*tmp;
+
 	i = 0;
 	tmp = (char *) s;
 	while (i < n)
@@ -24,5 +24,5 @@ void	bzero(void *s, size_t n)
 		tmp[i] = 0;
 		i++;
 	}
-	return;
+	return ;
 }

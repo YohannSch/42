@@ -6,13 +6,13 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:49:41 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:50:24 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:29:10 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

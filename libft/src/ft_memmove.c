@@ -6,32 +6,33 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 17:12:24 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/05/07 17:16:31 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:58:47 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../libft.h"
+#include "../libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int i;
-	char mv_dest[n];
-	char * tmp_dest;
-	char * tmp_src;
-	
-	i = 0;
+	size_t		i;
+	char		*tmp_dest;
+	const char	*tmp_src;
+
+	if (!dest && !src)
+		return (NULL);
 	tmp_dest = (char *) dest;
-	tmp_src = (char *) src;
-	while (i < n)
+	tmp_src = (const char *) src;
+	if (tmp_dest > tmp_src && tmp_src + n > tmp_dest)
+		while (n-- > 0)
+			tmp_dest[n] = tmp_src[n];
+	else
 	{
-		mv_dest[i] = tmp_src[i];
-		i++;
+		i = 0;
+		while (i < n)
+		{
+			tmp_dest[i] = tmp_src[i];
+			i++;
+		}
 	}
-	i = 0;
-	while (i < n)
-	{
-		tmp_dest[i] = mv_dest[i];
-		i++;
-	}	
 	return (dest);
 }

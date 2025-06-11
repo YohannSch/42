@@ -6,27 +6,28 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:59:37 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/05/13 17:20:56 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:09:56 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../libft.h"
+#include "../libft.h"
 
-char	*	strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	size_t little_len;
+	size_t	i;
+	size_t	little_len;
 
 	i = 0;
 	little_len = ft_strlen(little);
-	if (little[i] == 0)
-		return (big);
-	while (big[i] && i < len)
-		{
-			if(ft_memcmp(&big[i], little, little_len) == 0)
-				return (&big[i]);
-			else
-				i++;
-		}
+	if (little_len == 0)
+		return ((char *)big);
+	if (len == 0 || little_len > len)
+		return (NULL);
+	while (big[i] && i <= (len - little_len))
+	{
+		if (ft_memcmp(&big[i], little, little_len) == 0)
+			return ((char *)(big + i));
+		i++;
+	}
 	return (NULL);
 }

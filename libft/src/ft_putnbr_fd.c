@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 13:10:16 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:20:04 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 16:03:33 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int	ln;
-	
-	ln = n;
-	if (ln < 0)
+	if (n == -2147483648)
+	{
+		write (fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
 	{
 		write(fd, "-", 1);
-		ln = -ln;
+		n = -n;
 	}
-	if (ln > 9)
-		ft_putnbr_fd(ln / 10, fd);
-	ft_putchar_fd((ln % 10 + 48), fd);
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10 + '0'), fd);
 }
-
-// int main(int argc, char const *argv[])
-// {
-// 	if (argc == 3)
-// 	{
-// 		ft_putnbr_fd(atoi(argv[1]), atoi(argv[2]));
-// 		write(1, "\n", 1);
-// 	}
-// 	return 0;
-// }
-

@@ -6,13 +6,13 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:51:16 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/03/25 12:51:52 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/05 14:29:14 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int isprint(int c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
