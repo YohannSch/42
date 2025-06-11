@@ -6,7 +6,7 @@
 #    By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 12:49:33 by yscheupl          #+#    #+#              #
-#    Updated: 2025/06/11 17:33:18 by yscheupl         ###   ########.fr        #
+#    Updated: 2025/06/12 00:39:23 by yscheupl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,6 @@ SOURCES_LIBFT += src/ft_strtrim.c
 SOURCES_LIBFT += src/ft_substr.c
 SOURCES_LIBFT += src/ft_tolower.c
 SOURCES_LIBFT += src/ft_toupper.c
-#SOURCES_LIBFT += src/ft_putnbr_base_fd.c
-#SOURCES_LIBFT += src/ft_atoll.c
-#SOURCES_LIBFT += src/ft_strcat.c
-#SOURCES_LIBFT += src/ft_strcpy.c
 
 #Includes###################################
 INCLUDES_LIBFT = libft.h
@@ -81,6 +77,5 @@ fclean: clean
 	rm $(NAME)
 	
 re: fclean all
-
 
 .PHONY: all clean fclean re
