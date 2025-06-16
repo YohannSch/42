@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 14:48:31 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/11 18:08:29 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:41:44 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdarg.h>
 
 // write functions
 void	ft_putstr_fd(char *s, int fd);

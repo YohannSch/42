@@ -6,11 +6,12 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:59:37 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/12 00:37:00 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:08:01 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include	<string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
