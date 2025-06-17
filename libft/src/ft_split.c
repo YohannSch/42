@@ -6,13 +6,24 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:32:42 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/16 21:06:23 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:37:47 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-#include "../libft.h"
+static void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (!tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 static int	count_words(const char *str, char c)
 {
@@ -72,7 +83,15 @@ static void	fill_split(const char *s, char c, char **res)
 		while (s[i] && s[i] != c)
 			i++;
 		if (i > start)
-			res[j++] = word_dup(s, start, i);
+		{
+			res[j] = word_dup(s, start, i);
+			if (!res[j] || res[j] == NULL)
+			{
+				free_tab(res);
+				return ;
+			}
+			j++;
+		}
 	}
 	res[j] = NULL;
 }
@@ -89,5 +108,7 @@ char	**ft_split(const char *s, char c)
 	if (!res)
 		return (NULL);
 	fill_split(s, c, res);
+	if (!res)
+		return (NULL);
 	return (res);
 }
