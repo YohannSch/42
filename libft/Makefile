@@ -6,52 +6,48 @@
 #    By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 12:49:33 by yscheupl          #+#    #+#              #
-#    Updated: 2025/06/16 20:28:19 by yscheupl         ###   ########.fr        #
+#    Updated: 2025/06/17 21:15:55 by yscheupl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
 
-# Directories
-SRCDIR := src
-OBJDIR := .
-
 #Source#####################################
 
-SRC += src/ft_atoi.c
-SRC += src/ft_bzero.c
-SRC += src/ft_calloc.c
-SRC += src/ft_isalnum.c
-SRC += src/ft_isalpha.c
-SRC += src/ft_isascii.c
-SRC += src/ft_isdigit.c
-SRC += src/ft_isprint.c
-SRC += src/ft_itoa.c
-SRC += src/ft_memchr.c
-SRC += src/ft_memcmp.c
-SRC += src/ft_memcpy.c
-SRC += src/ft_memmove.c
-SRC += src/ft_memset.c
-SRC += src/ft_putchar_fd.c
-SRC += src/ft_putendl_fd.c
-SRC += src/ft_putnbr_fd.c
-SRC += src/ft_putstr_fd.c
-SRC += src/ft_split.c
-SRC += src/ft_strchr.c
-SRC += src/ft_strdup.c
-SRC += src/ft_striteri.c
-SRC += src/ft_strjoin.c
-SRC += src/ft_strlcat.c
-SRC += src/ft_strlcpy.c
-SRC += src/ft_strlen.c
-SRC += src/ft_strmapi.c
-SRC += src/ft_strncmp.c
-SRC += src/ft_strnstr.c
-SRC += src/ft_strrchr.c
-SRC += src/ft_strtrim.c
-SRC += src/ft_substr.c
-SRC += src/ft_tolower.c
-SRC += src/ft_toupper.c
+SRC += ft_atoi.c
+SRC += ft_bzero.c
+SRC += ft_calloc.c
+SRC += ft_isalnum.c
+SRC += ft_isalpha.c
+SRC += ft_isascii.c
+SRC += ft_isdigit.c
+SRC += ft_isprint.c
+SRC += ft_itoa.c
+SRC += ft_memchr.c
+SRC += ft_memcmp.c
+SRC += ft_memcpy.c
+SRC += ft_memmove.c
+SRC += ft_memset.c
+SRC += ft_putchar_fd.c
+SRC += ft_putendl_fd.c
+SRC += ft_putnbr_fd.c
+SRC += ft_putstr_fd.c
+SRC += ft_split.c
+SRC += ft_strchr.c
+SRC += ft_strdup.c
+SRC += ft_striteri.c
+SRC += ft_strjoin.c
+SRC += ft_strlcat.c
+SRC += ft_strlcpy.c
+SRC += ft_strlen.c
+SRC += ft_strmapi.c
+SRC += ft_strncmp.c
+SRC += ft_strnstr.c
+SRC += ft_strrchr.c
+SRC += ft_strtrim.c
+SRC += ft_substr.c
+SRC += ft_tolower.c
+SRC += ft_toupper.c
 
 #Includes###################################
 
@@ -65,14 +61,11 @@ CFLAGS := -Werror -Wextra -Wall -g3
 
 #Rules######################################
 
-OBJ := $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJ := $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(OBJDIR):
-	@mkdir -p $@
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+%.o: %.c $(INCLUDES_LIBFT)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
@@ -89,4 +82,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
