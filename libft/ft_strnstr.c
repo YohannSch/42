@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:59:37 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/17 21:15:19 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/19 14:31:12 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	little_len = ft_strlen(little);
 	if (little_len == 0)
 		return ((char *)big);
-	if (len == 0 || little_len > len)
+	if (len == 0)
 		return (NULL);
-	while (big[i] && i <= (len - little_len))
+	while (big[i] && i + little_len <= len)
 	{
 		if (ft_memcmp(&big[i], little, little_len) == 0)
 			return ((char *)(big + i));
