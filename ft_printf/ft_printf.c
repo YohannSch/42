@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:03:11 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/28 12:31:52 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/06/28 12:46:42 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	ft_printf(const char *str, ...)
 int	ft_format(va_list args, const char c)
 {
 	int	count ;
-	int	*ptrcount;
 
-	*ptrcount = &count;
 	count = 0;
 	if (c == 'c')
 		count = ft_printchar(va_arg(args, int));
@@ -51,9 +49,9 @@ int	ft_format(va_list args, const char c)
 	else if (c == 'p')
 		count = ft_printptr(va_arg(args, unsigned long long));
 	else if (c == 'd' || c == 'i')
-		count = ft_printnbr(va_arg(args, int), ptrcount);
+		count = ft_printnbr(va_arg(args, int), &count);
 	else if (c == 'u')
-		count = ft_printunbr(va_arg(args, unsigned int), ptrcount);
+		count = ft_printunbr(va_arg(args, unsigned int), &count);
 	else if (c == 'x')
 		count = ft_printhex(va_arg(args, unsigned int), "0123456789abcdef", 0);
 	else if (c == 'X')
