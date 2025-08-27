@@ -6,22 +6,22 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:56:39 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/07/08 18:05:23 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/08/27 14:26:23 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
-	i = (int)ft_strlen(s);
-	while (i >= 0)
+	i = 0;
+	while (s[i])
 	{
 		if (s[i] == (char)c)
 			return ((char *)&s[i]);
-		i--;
+		i++;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:56:04 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/07/08 19:02:37 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:26:23 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,67 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-char *get_next_line(int fd)
-{
-	char	*buffer;
-	static char	*ligne;
-	
-	buffer = malloc(sizeof(char) * BUFFER_SIZE);
-	if (!buffer)
-		return (NULL);
-	getting_the_line(fd, buffer, ligne)
-}
-
-char	*getting_the_line(int fd, char *buffer, static char *ligne)
-{
-	int		flag;
-	char	*res;
-	
-	flag = 1;
-	while (flag > 0)
-	{
-		flag = read(fd, (void*)buffer, BUFFER_SIZE);
-		ft_strjoin(ligne, buffer)
-		if(ft_strrchr(ligne, '\n') != NULL)
-			flag = -1;
-	}
-	res = fill_the_line(ft_strrchr(ligne, '\n'), ligne);
-	&ligne = ft_strrchr(ligne, '\n') + 1;
-	return (res)
-}
-
-char	*fill_the_line(char *retour, static char *ligne)
+char	*fill_the_line(char *retour, char *temp)
 {
 	int		len;
 	char	*res;
 	
-	len = ft_strlen(ligne) - ft_strlen(retour)
-	res = ft_substr(ligne, 0, len);
-	return (res)
+	len = ft_strlen(temp) - ft_strlen(retour);
+	res = ft_substr(temp, 0, len);
+	return (res);
+}
+
+char	*getting_the_line(int fd, char *buffer, char *temp)
+{
+	int		flag;
+	char	*res;
+	char *i;
+	
+	flag = 1;
+	if(ft_strchr(temp, '\n') != NULL)
+		flag = -2;
+	while (flag > 0)
+	{
+		flag = read(fd, buffer, BUFFER_SIZE);
+		temp = ft_strjoin(temp, buffer);
+		if(ft_strchr(temp, '\n') != NULL)
+		{
+			flag = -2;
+			break;
+		}
+		if (flag == -1)
+		{
+			return (NULL);
+		}
+		if (flag < BUFFER_SIZE && flag >= 0)
+		{
+		res = ft_strdup(temp);
+		return (res);
+		}
+	}
+	if (flag == -2)
+	{
+		res = fill_the_line(ft_strchr(temp, '\n') + 1, temp);
+		strcpy(buffer, ft_strchr(temp, '\n') + 1);
+		return (res);
+	}
+	// strcpy(buffer, ft_strchr(temp, '\n') + 1);
+	return (res);
+}
+
+char *get_next_line(int fd)
+{
+	static char	buffer[BUFFER_SIZE];
+	char	*temp;
+	char * res;
+	
+	temp = malloc(100000);
+	res = malloc(100000);
+	if (!temp)
+		return (NULL);
+	if (!res)
+		return (NULL);
+	temp = ft_strdup(buffer);
+	res = getting_the_line(fd, buffer, temp);
+	return (res);
 }
