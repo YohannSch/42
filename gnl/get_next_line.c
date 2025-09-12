@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:56:04 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/09/05 21:52:21 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/09/12 17:31:22 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-// Slight change: only one argument, returns up to '\n' or end
 char	*fill_the_line(char *temp)
 {
-	int		len = 0;
+	int		len;
 	char	*res;
 
+	len = 0;
 	if (!temp)
 		return (NULL);
 	while (temp[len] && temp[len] != '\n')
 		len++;
-	res = ft_substr(temp, 0, len + (temp[len] == '\n' ? 1 : 0)); // include \n if present
+	res = ft_substr(temp, 0, len + (temp[len] == '\n' ? 1 : 0));
 	return (res);
 }
 
@@ -57,11 +57,11 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 	int		flag;
 	char	*res;
 	char	*newline_pos;
+	char	*joined;
+	int		i;
 
 	flag = 1;
 	res = NULL;
-
-	// Check if temp already contains a newline
 	newline_pos = ft_strchr(temp, '\n');
 	while (flag > 0 && !newline_pos)
 	{
@@ -72,17 +72,15 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 			return (NULL);
 		}
 		buffer[flag] = '\0';
-		char *joined = ft_strjoin(temp, buffer);
+		joined = ft_strjoin(temp, buffer);
 		free(temp);
 		temp = joined;
 		newline_pos = ft_strchr(temp, '\n');
 	}
-
-	if (newline_pos) // found newline, normal case
+	if (newline_pos)
 	{
 		res = fill_the_line(temp);
-		// copy leftover to buffer
-		int i = 0;
+		i = 0;
 		newline_pos++;
 		while (*newline_pos)
 			buffer[i++] = *newline_pos++;
@@ -90,10 +88,10 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 		free(temp);
 		return (res);
 	}
-	else if (*temp) // EOF but temp has leftover data
+	else if (*temp)
 	{
 		res = ft_strdup(temp);
-		buffer[0] = '\0'; // clear buffer for next call
+		buffer[0] = '\0';
 		free(temp);
 		return (res);
 	}
@@ -101,19 +99,17 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 	return (NULL);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1] = {0};
-	char	*temp;
-	char	*res;
+	char		*temp;
+	char		*res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
 	temp = ft_strdup(buffer);
 	if (!temp)
 		return (NULL);
-
 	res = getting_the_line(fd, buffer, temp);
 	if (!res || !*res)
 	{
