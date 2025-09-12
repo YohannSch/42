@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:56:04 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/09/12 17:31:22 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/09/12 17:42:50 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
+// Slight change: only one argument, returns up to '\n' or end
 char	*fill_the_line(char *temp)
 {
 	int		len;
@@ -48,7 +49,11 @@ char	*fill_the_line(char *temp)
 		return (NULL);
 	while (temp[len] && temp[len] != '\n')
 		len++;
-	res = ft_substr(temp, 0, len + (temp[len] == '\n' ? 1 : 0));
+	if (temp[len] == '\n')
+		res = ft_substr(temp, 0, len + 1);
+	else
+		res = ft_substr(temp, 0, len);
+	// include \n if present
 	return (res);
 }
 
@@ -62,6 +67,7 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 
 	flag = 1;
 	res = NULL;
+	// Check if temp already contains a newline
 	newline_pos = ft_strchr(temp, '\n');
 	while (flag > 0 && !newline_pos)
 	{
@@ -77,9 +83,10 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 		temp = joined;
 		newline_pos = ft_strchr(temp, '\n');
 	}
-	if (newline_pos)
+	if (newline_pos) // found newline, normal case
 	{
 		res = fill_the_line(temp);
+		// copy leftover to buffer
 		i = 0;
 		newline_pos++;
 		while (*newline_pos)
@@ -88,10 +95,10 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 		free(temp);
 		return (res);
 	}
-	else if (*temp)
+	else if (*temp) // EOF but temp has leftover data
 	{
 		res = ft_strdup(temp);
-		buffer[0] = '\0';
+		buffer[0] = '\0'; // clear buffer for next call
 		free(temp);
 		return (res);
 	}
@@ -101,15 +108,17 @@ char	*getting_the_line(int fd, char *buffer, char *temp)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1] = {0};
-	char		*temp;
-	char		*res;
+	static char buffer[BUFFER_SIZE + 1] = {0};
+	char *temp;
+	char *res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+
 	temp = ft_strdup(buffer);
 	if (!temp)
 		return (NULL);
+
 	res = getting_the_line(fd, buffer, temp);
 	if (!res || !*res)
 	{
