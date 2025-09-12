@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:56:39 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/09/12 17:26:35 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/09/12 18:07:27 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,32 +54,25 @@ size_t	ft_strlen(char const *str)
 	return (i);
 }
 
-static char	*handle_size_overflow(void)
-{
-	char	*res;
-
-	res = malloc(sizeof(char) * 1);
-	if (!res)
-		return (NULL);
-	res[0] = '\0';
-	return (res);
-}
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	i;
 
-	if (!s)
-		return (NULL);
+	i = 0;
 	if (start >= ft_strlen(s))
-		return (handle_size_overflow());
+	{
+		res = malloc(1);
+		if (!res)
+			return (NULL);
+		res[0] = '\0';
+		return (res);
+	}
 	else if (len > ft_strlen(&s[start]))
 		len = ft_strlen(&s[start]);
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	i = 0;
 	while (s[start + i] && i < len)
 	{
 		res[i] = s[start + i];
