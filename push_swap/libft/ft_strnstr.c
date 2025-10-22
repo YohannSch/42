@@ -1,17 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:44 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 01:00:21 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/05/13 16:59:37 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/06/19 14:31:12 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd);
-void push_swap(int argc, char **argv);
-int *parameters(int argc, char **argv):
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	little_len;
+
+	i = 0;
+	little_len = ft_strlen(little);
+	if (little_len == 0)
+		return ((char *)big);
+	if (len == 0)
+		return (NULL);
+	while (big[i] && i + little_len <= len)
+	{
+		if (ft_memcmp(&big[i], little, little_len) == 0)
+			return ((char *)(big + i));
+		i++;
+	}
+	return (NULL);
+}

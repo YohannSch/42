@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:44 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 01:00:21 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/05/13 16:16:54 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/06/17 21:15:34 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd);
-void push_swap(int argc, char **argv);
-int *parameters(int argc, char **argv):
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
+}

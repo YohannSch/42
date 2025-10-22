@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:44 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 01:00:21 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/05/07 16:52:35 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/06/17 21:15:51 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd);
-void push_swap(int argc, char **argv);
-int *parameters(int argc, char **argv):
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*tmp;
+
+	i = 0;
+	tmp = (char *) s;
+	while (i < n)
+	{
+		tmp[i] = 0;
+		i++;
+	}
+	return ;
+}

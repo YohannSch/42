@@ -1,17 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:44 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 01:00:21 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/05/13 16:54:10 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/06/17 21:15:42 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd);
-void push_swap(int argc, char **argv);
-int *parameters(int argc, char **argv):
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t				i;
+	const unsigned char	*temp_s1;
+	const unsigned char	*temp_s2;
+
+	i = 0;
+	temp_s1 = (const unsigned char *) s1;
+	temp_s2 = (const unsigned char *) s2;
+	while (i < n)
+	{
+		if (temp_s1[i] == temp_s2[i])
+			i++;
+		else
+			return (temp_s1[i] - temp_s2[i]);
+	}
+	i--;
+	return (temp_s1[i] - temp_s2[i]);
+}

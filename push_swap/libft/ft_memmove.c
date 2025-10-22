@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:38 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 01:01:51 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/05/07 17:12:24 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/06/17 21:15:40 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "libft.h"
 
-void push_swap(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (parameters(argc, argv) = NULL)
-		return;
+	size_t		i;
+	char		*tmp_dest;
+	const char	*tmp_src;
 
-}
-
-int main(int argc, char **argv)
-{
-	if (argc > 1)
-		push_swap(argc, argv);
+	if (!dest && !src)
+		return (NULL);
+	tmp_dest = (char *) dest;
+	tmp_src = (const char *) src;
+	if (tmp_dest > tmp_src && tmp_src + n > tmp_dest)
+		while (n-- > 0)
+			tmp_dest[n] = tmp_src[n];
 	else
-		ft_putendl_fd("Error", 1);
-	return(0);
+	{
+		i = 0;
+		while (i < n)
+		{
+			tmp_dest[i] = tmp_src[i];
+			i++;
+		}
+	}
+	return (dest);
 }

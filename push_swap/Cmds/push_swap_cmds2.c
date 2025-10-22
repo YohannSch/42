@@ -6,11 +6,11 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:17:50 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/20 15:27:11 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/10/22 00:32:48 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<push_swap.h>
+#include"../push_swap.h"
 
 void ft_ra
 void ft_rb
