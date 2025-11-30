@@ -1,29 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:38 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/11/30 22:28:38 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/10/20 15:17:50 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/11/30 20:13:05 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
-
-void push_swap(int argc, char **argv)
-{
-	t_stacks	stacks;
-	if (parsing(argc, argv, &stacks) != 0)
-		return (ft_putendl_fd("Error", 1));
-}
-
-int main(int argc, char **argv)
-{
-	if (argc > 1)
-		push_swap(argc, argv);
-	else
-		ft_putendl_fd("Error", 1);
-	return(0);
-}
+#include"../push_swap.h"
