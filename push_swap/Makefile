@@ -10,7 +10,7 @@ contents=#
 #
 
 CC      := gcc
-CFLAGS  := -Wall -Wextra -Werror
+CFLAGS  := -Wall -Wextra -Werror -g3
 AR      := ar rcs
 RM      := rm -f
 
@@ -20,7 +20,7 @@ NAME    := push_swap
 # Example:
 # SRCS_PUSH    := srcs/push_swap.c srcs/parse.c srcs/ops.c srcs/utils.c
 # SRCS_CHECKER := srcs/checker.c srcs/utils.c srcs/ops.c
-SRCS_PUSH    := push_swap.c parameters/parameters.c Cmds/push_swap_cmds.c Cmds/push_swap_cmds2.c Cmds/push_swap_cmds3.c
+SRCS_PUSH    := push_swap.c parsing/parsing.c parsing/parsing_utils.c commands/swap.c commands/push.c commands/rotate.c commands/reverse.c algo/algo.c
 # ==========================================================
 
 OBJS_PUSH    := $(SRCS_PUSH:.c=.o)

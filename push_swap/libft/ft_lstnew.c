@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_cmds2.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 15:17:50 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/10/22 00:32:48 by yscheupl         ###   ########.fr       */
+/*   Created: 2025/12/01 01:34:47 by yscheupl          #+#    #+#             */
+/*   Updated: 2025/12/01 17:31:24 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../push_swap.h"
+#include "libft.h"
 
-void ft_ra
-void ft_rb
-void ft_rr
+t_list	*ft_lstnew(int value)
+{
+	t_list	*tmp;
+
+	tmp = malloc(sizeof(t_list));
+	if (tmp == NULL)
+		return (NULL);
+	else
+	{
+	tmp->value = value;
+	tmp->next = NULL;
+	tmp->prev = NULL;
+	}
+	return (tmp);
+}

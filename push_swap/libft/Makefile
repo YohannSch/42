@@ -6,7 +6,7 @@
 #    By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 12:49:33 by yscheupl          #+#    #+#              #
-#    Updated: 2025/06/17 21:15:55 by yscheupl         ###   ########.fr        #
+#    Updated: 2025/12/01 02:45:35 by yscheupl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,11 @@ SRC += ft_strtrim.c
 SRC += ft_substr.c
 SRC += ft_tolower.c
 SRC += ft_toupper.c
+SRC += ft_lstnew.c
+SRC += ft_lstadd.c
+SRC += ft_lstsearch.c
+SRC += ft_lstsize.c
+SRC += ft_atoll.c
 
 #Includes###################################
 
