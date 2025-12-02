@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 01:34:47 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/01 04:09:46 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 00:07:04 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstadd(t_list *new, t_list *head)
 {
 	if (new == NULL)
 	{
-		return;
+		return ;
 	}
 	if (head->next == NULL)
 	{

@@ -6,13 +6,13 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:17:50 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/01 16:51:34 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 00:06:33 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../push_swap.h"
+#include "../push_swap.h"
 
-void sa(t_list **head_a)
+void	sa(t_list **head_a)
 {
 	int	tmp;
 
@@ -24,7 +24,7 @@ void sa(t_list **head_a)
 	ft_putendl_fd("sa", 1);
 }
 
-void sb(t_list **head_b)
+void	sb(t_list **head_b)
 {
 	int	tmp;
 
@@ -36,7 +36,7 @@ void sb(t_list **head_b)
 	ft_putendl_fd("sb", 1);
 }
 
-void ss(t_list **head_a, t_list **head_b)
+void	ss(t_list **head_a, t_list **head_b)
 {
 	int	tmp;
 

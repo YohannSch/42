@@ -6,13 +6,13 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 01:34:47 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/01 02:07:05 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 00:07:10 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsearch(t_list *head, t_list *searching)
+int	ft_lstsearch(t_list *head, t_list *searching)
 {
 	int		i;
 	t_list	*tmp;

@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:32:28 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/02 05:16:07 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 00:07:52 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ char	**create_tab_inputs(int argc, char **argv)
 	}
 	return (tab_inputs);
 }
-int check_valid_input(char *input)
+
+int	check_valid_input(char *input)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (input[0] == '-' || input[0] == '+')
@@ -108,10 +109,11 @@ long long int	*create_index_sorted_tab(long long int *tab_lli, int size)
 	}
 	return (free(tab_lli), free(tab_sorted), index_tab);
 }
-void printlist(t_list *head)
+
+void	printlist(t_list *head)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = head;
@@ -127,8 +129,8 @@ void printlist(t_list *head)
 
 int	fill_list(t_list *head, long long int *tab_lli, int size)
 {
-	int i;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 1;
 	while (i < size)
@@ -141,9 +143,10 @@ int	fill_list(t_list *head, long long int *tab_lli, int size)
 	}
 	return (success);
 }
-int is_sorted(char **tab_inputs)
+
+int	is_sorted(char **tab_inputs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab_inputs[i + 1])
@@ -175,8 +178,8 @@ int	parsing(int argc, char **argv, t_stacks *stacks)
 	if (tab_lli == NULL)
 		return (parsing_failure);
 	stacks->stack_a = ft_lstnew(tab_lli[0]);
-	if (fill_list(stacks->stack_a, tab_lli, tablen(tab_inputs)) == parsing_failure)
+	if (fill_list(stacks->stack_a, tab_lli,
+			tablen(tab_inputs)) == parsing_failure)
 		return (parsing_failure);
-	// printlist(stacks->stack_a);
 	return (success);
 }
