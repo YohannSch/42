@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:17:38 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/02 00:52:37 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/02 05:14:08 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	push_swap(int argc, char **argv)
 
 	stacks.stack_b = NULL;
 	if (parsing(argc, argv, &stacks) != 0)
-		return (ft_putendl_fd("Error", 1));
+		return (ft_putendl_fd("Error", 2));
 	algo(&stacks);
-	printlist(stacks.stack_a);
+	// printlist(stacks.stack_a);
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc > 1)
+	if (argc > 1 && argv[1][0] != '\0')
 		push_swap(argc, argv);
 	else
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 	return (0);
 }

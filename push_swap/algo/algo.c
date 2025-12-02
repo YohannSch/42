@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:10:37 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/02 02:36:55 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/02 04:58:57 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,22 @@
 void	filling_b(t_stacks *stacks, int window_size)
 {
 	int	i;
-	int size;
 	
-	size = ft_lstsize(stacks->stack_a);
 	i = 0;
-	while (size > 5)
+	while (ft_lstsize(stacks->stack_a) > 5)
 	{
 		if (stacks->stack_a->value > i + window_size)
-		{
 			ra(&stacks->stack_a);
-			i++;
-		}
 		else if (stacks->stack_a->value < i)
 		{
 			pb(&stacks->stack_a, &stacks->stack_b);
 			rb(&stacks->stack_b);
 			i++;
-			size--;
 		}
 		else
 		{
 			pb(&stacks->stack_a, &stacks->stack_b);
 			i++;
-			size--;
 		}
 	}
 }
@@ -71,12 +64,14 @@ void	filling_a(t_stacks *stacks)
 	int	size;
 	int	max_index;
 	int	i;
+	int limit;
 
 	size = ft_lstsize(stacks->stack_b);
+	limit = 5;
 	while (size > 0)
 	{
 		max_index = find_max_index(stacks->stack_b);
-		if (max_index > size / 2)
+		if (max_index <= size / 2)
 		{
 			i = 0;
 			while (i < max_index)
@@ -94,14 +89,13 @@ void	filling_a(t_stacks *stacks)
 				i--;
 			}
 		}
+		while (stacks->stack_a->prev->value > stacks->stack_b->value && limit > 0)
+			{
+				rra(&stacks->stack_a);
+				limit--;
+			}
 		pa(&stacks->stack_a, &stacks->stack_b);	
 		size--;
-		if (stacks->stack_a->value > stacks->stack_a->prev->value)
-		{
-			rra(&stacks->stack_a);
-			while (stacks->stack_a->value > stacks->stack_a->prev->value)
-				rra(&stacks->stack_a);
-		}
 	}
 }
 
@@ -160,7 +154,11 @@ void sort_three(t_stacks *stacks)
 	first = stacks->stack_a->value;
 	second = stacks->stack_a->next->value;
 	third = stacks->stack_a->next->next->value;
-
+	if (first == third)
+	{
+		ra(&stacks->stack_a);
+		return;
+	}
 	if (first > second && second < third && first < third)
 		sa(&stacks->stack_a);
 	else if (first > second && second > third)
@@ -193,9 +191,10 @@ void algo(t_stacks *stacks)
 		int	window_size;
 
 		if (size <= 100)
-			window_size = 20;
+			window_size = ft_lstsize(stacks->stack_a) * 0.1;
 		else
-			window_size = 45;
+			window_size = ft_lstsize(stacks->stack_a) * 0.06;
+		
 		filling_b(stacks, window_size);
 		sort_five(stacks);
 		filling_a(stacks);

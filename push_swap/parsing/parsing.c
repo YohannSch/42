@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:32:28 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/01 20:59:08 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/02 05:16:07 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,19 @@ int	fill_list(t_list *head, long long int *tab_lli, int size)
 	}
 	return (success);
 }
+int is_sorted(char **tab_inputs)
+{
+	int i;
 
+	i = 0;
+	while (tab_inputs[i + 1])
+	{
+		if (ft_atoll(tab_inputs[i]) > ft_atoll(tab_inputs[i + 1]))
+			return (parsing_failure);
+		i++;
+	}
+	return (success);
+}
 
 int	parsing(int argc, char **argv, t_stacks *stacks)
 {
@@ -151,6 +163,11 @@ int	parsing(int argc, char **argv, t_stacks *stacks)
 	tab_inputs = create_tab_inputs(argc, argv);
 	if (tab_inputs == NULL)
 		return (parsing_failure);
+	if (is_sorted(tab_inputs) == success)
+	{
+		free_tab(tab_inputs);
+		return (parsing_failure);
+	}
 	tab_lli = create_tab_lli(tab_inputs);
 	if (tab_lli == NULL)
 		return (parsing_failure);
@@ -160,6 +177,6 @@ int	parsing(int argc, char **argv, t_stacks *stacks)
 	stacks->stack_a = ft_lstnew(tab_lli[0]);
 	if (fill_list(stacks->stack_a, tab_lli, tablen(tab_inputs)) == parsing_failure)
 		return (parsing_failure);
-	printlist(stacks->stack_a);
+	// printlist(stacks->stack_a);
 	return (success);
 }
