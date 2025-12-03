@@ -27,9 +27,10 @@ OBJS_PUSH    := $(SRCS_PUSH:.c=.o)
 
 # Optional libft (will be used only if ./libft/libft.a exists or libft dir exists)
 LIBFT_A := libft/libft.a
+LIBFT_DIR := libft
 
 # If libft directory is present, build it when needed
-ifneq ($(wildcard $(LIBFT_A)),)
+ifneq ($(wildcard $(LIBFT_DIR)),)
 LINK_LIBFT := $(LIBFT_A)
 else
 LINK_LIBFT :=
@@ -58,6 +59,7 @@ endif
 push_swap: $(NAME)
 
 bonus: all
+
 
 clean:
 	@echo "Cleaning objects..."
