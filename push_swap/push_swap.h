@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:17:44 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 00:02:13 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:16:00 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void			algo(t_stacks *stacks);
 void			filling_b(t_stacks *stacks, int window_size);
 void			filling_a(t_stacks *stacks);
 int				find_max_index(t_list *head);
+int				check_valid_input(char *input);
 
 #endif

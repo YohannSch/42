@@ -6,29 +6,51 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:17:50 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 00:04:57 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:07:56 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+void	pa_utils(t_list **head_a, t_list **head_b)
+{
+	t_list	*tmp_a;
+
+	(*head_a) = (*head_b);
+	(*head_b) = (*head_b)->next;
+	(*head_b)->prev->prev->next = (*head_b);
+	(*head_b)->prev = (*head_b)->prev->prev;
+	tmp_a = (*head_a);
+	(*head_a)->next = tmp_a;
+	(*head_a)->prev = tmp_a;
+	ft_putendl_fd("pa", 1);
+	return ;
+}
+
+void	pb_utils(t_list **head_a, t_list **head_b)
+{
+	t_list	*tmp_b;
+
+	(*head_b) = (*head_a);
+	(*head_a) = (*head_a)->next;
+	(*head_a)->prev->prev->next = (*head_a);
+	(*head_a)->prev = (*head_a)->prev->prev;
+	tmp_b = (*head_b);
+	(*head_b)->next = tmp_b;
+	(*head_b)->prev = tmp_b;
+	ft_putendl_fd("pb", 1);
+	return ;
+}
+
 void	pb(t_list **head_a, t_list **head_b)
 {
 	t_list	*tmp_a;
-	t_list	*tmp_b;
 
 	if (*head_a == NULL)
 		return ;
 	if (!(*head_b))
 	{
-		(*head_b) = (*head_a);
-		(*head_a) = (*head_a)->next;
-		(*head_a)->prev->prev->next = (*head_a);
-		(*head_a)->prev = (*head_a)->prev->prev;
-		tmp_b = (*head_b);
-		(*head_b)->next = tmp_b;
-		(*head_b)->prev = tmp_b;
-		ft_putendl_fd("pb", 1);
+		pb_utils(head_a, head_b);
 		return ;
 	}
 	tmp_a = (*head_a)->next;
@@ -49,20 +71,12 @@ void	pb(t_list **head_a, t_list **head_b)
 void	pa(t_list **head_a, t_list **head_b)
 {
 	t_list	*tmp_b;
-	t_list	*tmp_a;
 
 	if (*head_b == NULL)
 		return ;
 	if (!(*head_a))
 	{
-		(*head_a) = (*head_b);
-		(*head_b) = (*head_b)->next;
-		(*head_b)->prev->prev->next = (*head_b);
-		(*head_b)->prev = (*head_b)->prev->prev;
-		tmp_a = (*head_a);
-		(*head_a)->next = tmp_a;
-		(*head_a)->prev = tmp_a;
-		ft_putendl_fd("pa", 1);
+		pa_utils(head_a, head_b);
 		return ;
 	}
 	tmp_b = (*head_b)->next;

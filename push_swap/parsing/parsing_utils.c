@@ -6,24 +6,11 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 00:28:30 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 00:07:24 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:25:13 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (!tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
 
 int	tablen(char **tab)
 {
@@ -35,22 +22,12 @@ int	tablen(char **tab)
 	return (i);
 }
 
-long long int	*create_sorted_tab(long long int *tab_lli, int size)
+long long int	*create_sorted_tab_utils(long long int *tab, int size)
 {
 	int				i;
 	int				j;
-	long long int	*tab;
 	long long int	temp;
 
-	tab = malloc(sizeof(long long int) * size);
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		tab[i] = tab_lli[i];
-		i++;
-	}
 	i = 0;
 	while (i < size - 1)
 	{
@@ -70,6 +47,24 @@ long long int	*create_sorted_tab(long long int *tab_lli, int size)
 	return (tab);
 }
 
+long long int	*create_sorted_tab(long long int *tab_lli, int size)
+{
+	int				i;
+	long long int	*tab;
+
+	tab = malloc(sizeof(long long int) * size);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		tab[i] = tab_lli[i];
+		i++;
+	}
+	tab = create_sorted_tab_utils(tab, size);
+	return (tab);
+}
+
 int	check_duplicates(long long int *tab_lli, int size)
 {
 	int	i;
@@ -85,6 +80,24 @@ int	check_duplicates(long long int *tab_lli, int size)
 				return (parsing_failure);
 			j++;
 		}
+		i++;
+	}
+	return (success);
+}
+
+int	check_valid_input(char *input)
+{
+	int	i;
+
+	i = 0;
+	if (input[0] == '-' || input[0] == '+')
+		i++;
+	if (input[i] == '\0')
+		return (parsing_failure);
+	while (input[i])
+	{
+		if (!ft_isdigit(input[i]))
+			return (parsing_failure);
 		i++;
 	}
 	return (success);

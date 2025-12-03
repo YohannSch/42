@@ -6,56 +6,11 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:32:28 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 00:07:52 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:10:08 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-char	**create_tab_inputs(int argc, char **argv)
-{
-	char	**tab_inputs;
-	int		i;
-
-	i = 1;
-	if (argc == 2)
-	{
-		tab_inputs = ft_split(argv[1], ' ');
-	}
-	else
-	{
-		tab_inputs = malloc(sizeof(char *) * argc);
-		if (!tab_inputs)
-			return (NULL);
-		while (argv[i] != NULL)
-		{
-			tab_inputs[i - 1] = ft_strdup(argv[i]);
-			if (!tab_inputs[i - 1])
-				return (NULL);
-			i++;
-		}
-		tab_inputs[i - 1] = NULL;
-	}
-	return (tab_inputs);
-}
-
-int	check_valid_input(char *input)
-{
-	int	i;
-
-	i = 0;
-	if (input[0] == '-' || input[0] == '+')
-		i++;
-	if (input[i] == '\0')
-		return (parsing_failure);
-	while (input[i])
-	{
-		if (!ft_isdigit(input[i]))
-			return (parsing_failure);
-		i++;
-	}
-	return (success);
-}
 
 long long int	*create_tab_lli(char **tab_inputs)
 {
@@ -110,22 +65,22 @@ long long int	*create_index_sorted_tab(long long int *tab_lli, int size)
 	return (free(tab_lli), free(tab_sorted), index_tab);
 }
 
-void	printlist(t_list *head)
-{
-	t_list	*tmp;
-	int		i;
+// void	printlist(t_list *head)
+// {
+// 	t_list	*tmp;
+// 	int		i;
 
-	i = 0;
-	tmp = head;
-	if (head == NULL)
-		return ;
-	while (i < ft_lstsize(head))
-	{
-		printf("Value at index %d: %d\n", i, tmp->value);
-		tmp = tmp->next;
-		i++;
-	}
-}
+// 	i = 0;
+// 	tmp = head;
+// 	if (head == NULL)
+// 		return ;
+// 	while (i < ft_lstsize(head))
+// 	{
+// 		printf("Value at index %d: %d\n", i, tmp->value);
+// 		tmp = tmp->next;
+// 		i++;
+// 	}
+// }
 
 int	fill_list(t_list *head, long long int *tab_lli, int size)
 {

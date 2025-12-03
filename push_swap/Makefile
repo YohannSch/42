@@ -20,7 +20,7 @@ NAME    := push_swap
 # Example:
 # SRCS_PUSH    := srcs/push_swap.c srcs/parse.c srcs/ops.c srcs/utils.c
 # SRCS_CHECKER := srcs/checker.c srcs/utils.c srcs/ops.c
-SRCS_PUSH    := push_swap.c parsing/parsing.c parsing/parsing_utils.c commands/swap.c commands/push.c commands/rotate.c commands/reverse.c algo/algo.c
+SRCS_PUSH    := push_swap.c parsing/parsing.c parsing/parsing_utils.c commands/swap.c commands/push.c commands/rotate.c commands/reverse.c algo/algo.c algo/algo_utils.c parsing/parsing_utils2.c
 # ==========================================================
 
 OBJS_PUSH    := $(SRCS_PUSH:.c=.o)
