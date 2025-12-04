@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 17:09:45 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 17:22:02 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/04 02:44:46 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**create_tab_inputs(int argc, char **argv)
 		{
 			tab_inputs[i - 1] = ft_strdup(argv[i]);
 			if (!tab_inputs[i - 1])
-				return (NULL);
+				return (free_tab(tab_inputs), NULL);
 			i++;
 		}
 		tab_inputs[i - 1] = NULL;
@@ -44,7 +44,7 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
-	while (!tab[i])
+	while (tab[i] != NULL)
 	{
 		free(tab[i]);
 		i++;

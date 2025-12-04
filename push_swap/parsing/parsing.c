@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 00:32:28 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/12/03 17:10:08 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:31:29 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,21 @@ int	parsing(int argc, char **argv, t_stacks *stacks)
 	tab_inputs = create_tab_inputs(argc, argv);
 	if (tab_inputs == NULL)
 		return (parsing_failure);
-	if (is_sorted(tab_inputs) == success)
-	{
-		free_tab(tab_inputs);
-		return (parsing_failure);
-	}
 	tab_lli = create_tab_lli(tab_inputs);
 	if (tab_lli == NULL)
-		return (parsing_failure);
+		return (free_tab(tab_inputs), parsing_failure);
+	if (is_sorted(tab_inputs) == success)
+	{
+		free(tab_lli);
+		free_tab(tab_inputs);
+		exit (0);
+	}
 	tab_lli = create_index_sorted_tab(tab_lli, tablen(tab_inputs));
 	if (tab_lli == NULL)
-		return (parsing_failure);
+		return (free_tab(tab_inputs), parsing_failure);
 	stacks->stack_a = ft_lstnew(tab_lli[0]);
 	if (fill_list(stacks->stack_a, tab_lli,
 			tablen(tab_inputs)) == parsing_failure)
-		return (parsing_failure);
-	return (success);
+		return (free_tab(tab_inputs), free(tab_lli), free_list(stacks->stack_a), parsing_failure);
+	return (free_tab(tab_inputs), free(tab_lli), success);
 }

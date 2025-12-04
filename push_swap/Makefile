@@ -9,10 +9,9 @@ contents=#
 # submodule/library in ./libft this Makefile will try to build and link it.
 #
 
-CC      := gcc
+CC      := cc
 CFLAGS  := -Wall -Wextra -Werror -g3
-AR      := ar rcs
-RM      := rm -f
+RM      := rm -rf
 
 NAME    := push_swap
 
@@ -29,51 +28,33 @@ OBJS_PUSH    := $(SRCS_PUSH:.c=.o)
 LIBFT_A := libft/libft.a
 LIBFT_DIR := libft
 
-# If libft directory is present, build it when needed
-ifneq ($(wildcard $(LIBFT_DIR)),)
-LINK_LIBFT := $(LIBFT_A)
-else
-LINK_LIBFT :=
-endif
 
 # Default target builds both executables
-all: $(NAME)
+all: $(LIBFT_A) $(NAME)
+	
+$(LIBFT_A) : $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 
 # Individual targets
-$(NAME): $(OBJS_PUSH) $(LINK_LIBFT)
-	@echo "Linking $@"
-	$(CC) $(CFLAGS) -o $@ $(OBJS_PUSH) $(LINK_LIBFT)
+$(NAME): $(OBJS_PUSH)
+	$(CC) $(CFLAGS) -o $@ $(OBJS_PUSH) $(LIBFT_A)
 
-# If a libft folder exists but libft.a is missing, run make in libft
-$(LIBFT_A):
-ifneq ($(wildcard libft),)
-	@$(MAKE) -C libft
-endif
 
 # Compile .c -> .o
 %.o: %.c
-	@echo "Compiling $<"
-	$(CC) $(CFLAGS) -I./include -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Helpers
-push_swap: $(NAME)
 
 bonus: all
 
 
 clean:
-	@echo "Cleaning objects..."
+	make -C libft/ fclean
 	$(RM) $(OBJS_PUSH)
-ifneq ($(wildcard libft),)
-	@$(MAKE) -C libft clean || true
-endif
 
 fclean: clean
-	@echo "Removing binaries..."
 	$(RM) $(NAME)
-ifneq ($(wildcard libft),)
-	@$(MAKE) -C libft fclean || true
-endif
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 12:49:33 by yscheupl          #+#    #+#              #
-#    Updated: 2025/12/01 02:45:35 by yscheupl         ###   ########.fr        #
+#    Updated: 2025/12/04 03:12:13 by yscheupl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ INCLUDES_LIBFT = libft.h
 
 #Compilation################################
 
-CC = gcc
+CC = cc
 
 CFLAGS := -Werror -Wextra -Wall -g3
 
