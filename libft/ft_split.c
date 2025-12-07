@@ -6,7 +6,7 @@
 /*   By: yscheupl <yscheupl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:32:42 by yscheupl          #+#    #+#             */
-/*   Updated: 2025/06/17 21:15:35 by yscheupl         ###   ########.fr       */
+/*   Updated: 2025/12/07 14:13:35 by yscheupl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
-	while (!tab[i])
+	while (tab[i] != NULL)
 	{
 		free(tab[i]);
 		i++;
